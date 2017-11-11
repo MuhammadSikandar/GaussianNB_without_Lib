@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import scipy.stats
 
 ### generate training data
@@ -22,4 +22,18 @@ classes_2 = np.zeros(len(x_class_2)) + 2
 classes = np.concatenate([classes_0, classes_1, classes_2])
 
 train_data = np.column_stack((x,y,classes))
-print train_data
+
+colors = ['r', 'g', 'b']
+f = lambda x: colors[int(x)]
+colors_train = list(map(f,classes))
+
+my_dpi = 96
+plt.figure(figsize =(800/my_dpi, 800/my_dpi), dpi = my_dpi)
+
+plt.scatter(x,y,color = colors_train)
+
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Training Data\n')
+
+plt.savefig("gausNB_training_data.png")

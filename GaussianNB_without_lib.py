@@ -37,3 +37,23 @@ plt.ylabel('Y')
 plt.title('Training Data\n')
 
 plt.savefig("gausNB_training_data.png")
+
+
+### naive bayes classfier
+
+### start with finding prior P(class)
+### p(Y=k) = count(data pts in class k) / total # of data pts
+
+def prior(data,K):
+    p = np.ones((K))
+    print p
+    nrow = data.shape[0]
+    print nrow
+    for k in np.arange(K):
+        p[k] = float(np.sum(data[:,-1] == k)) / float(nrow)
+        print p[k]
+    return p
+
+print train_data
+prior_ = prior(train_data, 3)
+print prior_
